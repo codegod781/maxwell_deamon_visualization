@@ -119,7 +119,7 @@ public class Maxwell {
 				{
 					particles[i].draw(g);
 				}
-				}
+				} 
 			}
 			// Animator is the CONTROLLER -- it responds to events
 			public class Animator implements ActionListener 
