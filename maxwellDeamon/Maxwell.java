@@ -74,7 +74,7 @@ public class Maxwell {
 				f.add(buttonPanel, BorderLayout.SOUTH);
 				f.add(tempPanel, BorderLayout.NORTH);
 
-				
+				//create pannels to add buttons
 				buttonPanel.setLayout(new GridLayout(1,2));
 				tempPanel.setLayout(new GridLayout(1,2));
 				
@@ -83,6 +83,9 @@ public class Maxwell {
 
 				buttonPanel.add(reset);
 				buttonPanel.add(addParticle);
+				
+				
+				//button functions
 				ButtonListener b = new ButtonListener();
 				reset.addActionListener(b);
 				addParticle.addActionListener(b);
@@ -91,11 +94,6 @@ public class Maxwell {
 				addParticle.setVisible(true);
 				reset.setVisible(true);
 
-
-//				for (int i = 0; i < particleCount; i++) 
-//				{
-//					particles[i] = new Particle();
-//				}
 				
 				// Create the play area
 				gamePanel = new Game(width, height);
@@ -106,25 +104,17 @@ public class Maxwell {
 				{
 					public void mouseClicked(MouseEvent e) 
 					{
-//						int x = e.getX();
-//						int y = e.getY();
-//						System.out.println("count: " + gateCount);
-//						if (particleCount < 100 && 150<x && x<450 && 150<y&& y<450) 
-//						{
+
 							if(gateCount%2 == 0)
 							{
-								System.out.println("set true ");
 								gamePanel.gateOpen=true;
 								gateCount++;
 							}
 							else if(gateCount%2!=0)
 							{
-								System.out.println("set false");
 								gamePanel.gateOpen=false;
 								gateCount++;
 							}
-//							particles[particleCount++] = new Particle(e.getX(), e.getY());
-//						}
 					}
 				}
 				);
@@ -151,14 +141,14 @@ public class Maxwell {
 				public void paintComponent(Graphics g) 
 				{
 					// Jpanel.paintComponent is too slow, so we just draw a white rectangle over everything
-				    // super.paintComponent(g);
 				    g.setColor(Color.white);
 				    g.fillRect(width/4,height/4,width/2,height/2);
 				    g.setColor(Color.black);
 				    g.drawRect(width/4-1,height/4-1,width/2+1,height/2+1);
 				    g.drawLine(width/2, height/4, width/2, height*3/8);
 				    g.drawLine(width/2, height*5/8, width/2, height*3/4);
-//					System.out.println("count: " + gateOpen);
+				    
+				    //open and close gate
 				    if(gateOpen == true)
 					{
 						g.setColor(Color.white);
@@ -169,32 +159,14 @@ public class Maxwell {
 						g.setColor(Color.green);
 					    g.drawLine(width/2, height*3/8, width/2, height*5/8);
 					}
-//				    g.setColor(Color.green);
-//				    g.drawLine(width/2, height*3/8, width/2, height*5/8);
+
+				    //draw each particle
 					for (int i = 0; i < particleCount; i++) 
 					{
 						particles[i].draw(g);
 					}
 				} 
-//				public void gateDo()
-//				{
-//					this.gate(Graphics g);
-//				}
-				public void gate(Graphics g)
-				{
-					if(gateOpen == false)
-					{
-						g.setColor(Color.white);
-					    g.drawLine(width/2, height*3/8, width/2, height*5/8);
-					    gateOpen = true;
-					}
-					else
-					{
-						g.setColor(Color.green);
-					    g.drawLine(width/2, height*3/8, width/2, height*5/8);
-					    gateOpen = false;
-					}
-				}
+
 			}
 			
 			
@@ -206,9 +178,7 @@ public class Maxwell {
 				{
 					if ( e.getActionCommand().equals("addParticle")) 
 					{
-						System.out.println("boobs");
-
-//						addParticle.setVisible(false);
+						//add four particles
 						particles[particleCount++] = new Particle("cold", "left");
 						particles[particleCount++] = new Particle("hot", "left");
 						particles[particleCount++] = new Particle("cold", "right");
@@ -225,9 +195,7 @@ public class Maxwell {
 						{
 							 particles[i]=null;
 						}
-						
-
-						
+						//reset to four particles
 						particles[0] = new  Particle("cold", "left");
 						particles[1] = new Particle("hot", "left");
 						particles[2] = new Particle("cold", "right");
@@ -235,13 +203,6 @@ public class Maxwell {
 						
 						particleCount = 4;
 					}
-//					else 
-//					{
-//						blueButton.setVisible(false);
-//						colorPanel.setBackground(Color.blue);
-//						redButton.setVisible(true);
-//					}
-		
 		
 				}
 	    	}

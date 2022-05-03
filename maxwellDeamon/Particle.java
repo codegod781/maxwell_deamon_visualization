@@ -7,6 +7,7 @@ import java.awt.Toolkit;
 
 public class Particle {
 	
+	//particle data members
 	String type;
 	double x, y;
 	double vx, vy, vtot;
@@ -22,6 +23,7 @@ public class Particle {
 		{
 
 			boolean notYet = true;
+			//create while loop to produce a speed between the given ranges
 			while(notYet)
 			{
 				vx = (int) (Math.random()*80-40); // [-50, 50)
@@ -70,7 +72,7 @@ public class Particle {
 
 
 	
-	
+	//create particle at given location (NOT USED)
 	public Particle(int xClick, int yClick) 
 	{
 		System.out.println("resolution:" + resolution);
@@ -90,12 +92,14 @@ public class Particle {
 			}
 		}
 	}
+	
 	public void move(double delta) 
 	{
 		oldx = x;
 		oldy = y;
 		x += vx * delta;
 		y += vy * delta;
+		//distinguish between open and closed gate
 		if(gateOpen==true) 
 		{
 			stayOnScreenOpen();
@@ -127,9 +131,10 @@ public class Particle {
 		// Check bounces off each edge of screen
 		if (x < 150)
 			vx *= -1;
-		if (x>297&&x<303&&y>150&&y<200)
+		//go through gate opening
+		if (x>297&&x<303&&y>150&&y<225)
 			vx *= -1;
-		if (x>297&&x<303&&y>400&&y<450)
+		if (x>297&&x<303&&y>375&&y<450)
 			vx *= -1;
 		if (x > 450)
 			vx *= -1;
@@ -138,6 +143,7 @@ public class Particle {
 		if (y > 450)
 			vy *= -1;
 	}	
+	
 	// Balls draw themselves at current position
 	public void draw(Graphics g) 
 	{
