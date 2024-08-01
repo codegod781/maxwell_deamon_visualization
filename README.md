@@ -228,3 +228,4 @@ The balls bounce off the center wall (apart from the door)                      
 The balls bounce off the door when it is closed, and pass through it when it is open           | 10
 **Total points**                                                                               | **150**
 
+# maxwell_deamon_visualization
